@@ -1,4 +1,4 @@
-from .models import DB, Track
+from Models.models import DB, Track
 import numpy as np
 import pandas as pd
 from scipy.spatial.distance import cosine as cosine_similarity

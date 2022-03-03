@@ -1,7 +1,7 @@
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 from os import getenv
-from .models import DB, Track
+from Models.models import DB, Track
 import numpy as np
 
 CLIENT_ID = getenv('SPOTIFY_CLIENT_ID')

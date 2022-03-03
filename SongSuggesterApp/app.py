@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from os import getenv
-from .models import *
+from Models.models import *
 from .spotify import *
 from .suggest import *
 
