@@ -1,0 +1,14 @@
+[requires]
+python_version = "3.9"
+
+
+[packages]
+flask = "*"
+spotipy = "*"
+python-dotenv = "*"
+flask-sqlalchemy = "*"
+gunicorn = "*"
+numpy = "*"
+pandas = "*"
+scipy = "*"
+
