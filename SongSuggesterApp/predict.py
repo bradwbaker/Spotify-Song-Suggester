@@ -1,8 +1,7 @@
-import Models.models
 from sklearn.metrics.pairwise import cosine_similarity,cosine_distances
 import numpy as np
 
-from SongSuggesterApp.Models.models import Track
+from models import Track
 
 
 def recommend_songs(track0_track, track1_track, hypo_track):
