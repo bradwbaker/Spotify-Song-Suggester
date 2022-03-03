@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Song Suggester</title>
+    <link rel="stylesheet" href="https://unpkg.com/picnic" />
+</head>
+
+<body>
+    <!--NAVIGATION BAR-->
+    <nav>
+        <!--BUTTON TO HOME ROUTE-->
+        <a href="/" class="brand"><span>Song Suggester</span></a>
+
+        <!-- MAKES MENU BUTTONS BELOW RESPONSIVE-->
+        <input id="bmenub" type="checkbox" class="show">
+        <label for="bmenub" class="burger pseudo button">Menu</label>
+
+        <!--MENU BUTTONS-->
+        <div class="menu">
+            <a href="/reset_preferences" class="button error">Reset Preferences</a>
+        </div>
+    </nav>
+
+    <!--USER INPUT-->
+    <article class="flex two" style="padding: 3em 1em;">
+        {% block content %}
+        <div>
+            <!--LEFT SCREEN DIVISION-->
+            <h1>Search For Music</h1>
+            <form action="/" autocomplete="off" method="post">
+                <input type="text" name="track_search" placeholder="Song Name">
+                <input type="text" name="artist_search" placeholder="Artist Name">
+                <input type="submit" value="Search">
+            </form>
+        </div>
+        <div>
+            <!--RIGHT SCREEN DIVISION-->
+            <!--requires search_results for rendering-->
+            {% if search_results is not none and search_results|length > 0%}
+            <h1>Add Music Preference</h1>
+            <form action="/" method="post">
+                <select name="track_preference">
+                    {% for result in search_results %}
+                    {% set option_str = result["name"] + " - " + result["artists"] %}
+                    {% set track_id = result["id"] %}
+                    <option value={{ track_id }}>{{ option_str }}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Add">
+            </form>
+            {% endif %}
+        </div>
+    </article>
+    <!--DATABASE OUTPUT-->
+    <!--requires preferences for rendering-->
+    <article class="flex two" style="padding: 3em 1em;">
+        <div>
+            {% if preferences is not none and preferences|length > 0 %}
+            <h1>Music Preferences</h1>
+            {% for preference in preferences %}
+            <li> {{ preference }}</li>
+            {% endfor %}
+            <form action="/" method="post">
+                <button name="recommend" type="submit" value="True">Get Suggestions</button>
+            </form>
+            {% endif %}
+        </div>
+        <div>
+            {% if recommendations is not none and recommendations|length > 0 %}
+            <h1>Music Recommendations</h1>
+            {% for recommendation in recommendations %}
+            <li> {{ recommendation }}</li>
+            {% endfor %}
+            {% endif %}
+        </div>
+        {% endblock %}
+    </article>
+</body>
+
+</html>
