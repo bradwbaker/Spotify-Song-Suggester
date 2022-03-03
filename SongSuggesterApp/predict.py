@@ -1,4 +1,4 @@
-from Models import models
+import Models.models
 from sklearn.metrics.pairwise import cosine_similarity,cosine_distances
 import numpy as np
 
