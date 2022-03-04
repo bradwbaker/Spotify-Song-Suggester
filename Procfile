@@ -1,1 +1,1 @@
-web: gunicorn app:APP -t 120
+web: gunicorn SongSuggesterApp:APP -t 120
